@@ -1,27 +1,26 @@
 let c = 1
-let scoreUser = 0
-let scoreMachine = 0
+let live = 10
 while (c == 1){
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-    const secretNumber = getRandomInt(1, 5);
+    const f = +prompt('Ведите до скольки компютер сможет загадывать')
+    const secretNumber = getRandomInt(1, f);
     while (true){
-        const b = +prompt('Угадайте число которое загадал компьютер')
-        if (b < 1 || b > 5){
+        const b = +prompt(`Угадайте число которое загадал компьютер от 1 до ${f}`)
+        if (b < 1 || b > f){
             alert('Написано не то число, попробуйте снова')
             continue
         }
         else{
             alert(`Ты написал ${b}`)
             if (b != secretNumber){
-                scoreMachine += 1
-                alert(`Ты не угадал, счет: ${scoreMachine} : ${scoreUser}`)
+                live = live - 1
+                alert(`Ты не угадал, осталось ${live} жизней`)
                 continue
             }
             else{
-                scoreUser += 1
-                alert(`Вы угадали, счет: ${scoreMachine} : ${scoreUser}`)
+                alert(`Вы угадали, оставшиеся жизни: ${live}`)
                 break
             }
         }
